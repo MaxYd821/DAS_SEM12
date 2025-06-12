@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model DAS_SEM12.Models.Rol;
+<h2>
+    Eliminar Rol
+</h2>
+<p>
+    ¿Estás seguro que desea eliminar el rol
+    <strong>
+        @Model.Nombre
+    </strong>
+    ?
+</p>
+<form asp-controller="Rol" asp-action="ConfirmacionEliminar" method="post">
+    <input type="hidden" asp-for="idRol" />
+    <div>
+        <button type="submit" class="btn btn-danger">
+            Eliminar
+        </button>
+        <a asp-controller="Rol" asp-action="Index" class="btn btn-secondary">
+            Cancelar
+        </a>
+    </div>
+</form>

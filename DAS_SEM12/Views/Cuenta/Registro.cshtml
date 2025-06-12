@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div>
+    <div>
+        <div>
+            Regístrate
+        </div>
+        <div>
+            <form action="/" method="post">
+                <input type="text" placeholder="Nombre" required/>
+                <br />
+                <input type="text" placeholder="Apellido" required/>
+                <br />
+                <input type="text" placeholder="Correo" required />
+                <br />
+                <input type="password" placeholder="Contraseña" required />
+                <br />
+                <input type="password" placeholder="Confrimar Contraseña" required />
+                <br />
+                <select>
+                    <option value="">
+                        Selecciona un rol
+                    </option>
+                </select>
+                <br />
+                <div>
+                    <button type="submit">
+                        Regístrate
+                    </button>
+                </div>
+                <a asp-controller="Cuenta" asp-action="Login">
+                    ¿Ya tienes una cuenta?
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

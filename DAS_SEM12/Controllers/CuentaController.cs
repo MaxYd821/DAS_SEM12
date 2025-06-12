@@ -31,5 +31,11 @@ namespace DAS_SEM12.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        [HttpGet]
+        public IActionResult Registro()
+        {
+            ViewBag.Roles = _appDBContext.Roles.ToList();
+            return View();
+        }
     }
 }
