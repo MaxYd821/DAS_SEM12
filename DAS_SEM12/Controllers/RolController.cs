@@ -46,11 +46,15 @@ namespace DAS_SEM12.Controllers
             return View(rolId);
         }
         [HttpPost]
-        public async Task<IActionResult> ConfirmacionEliminar(int id) { 
+        public IActionResult ConfirmacionEliminar(int id) { 
             var rol =  _appDBContext.Roles.Find(id);
-                _appDBContext.Roles.Remove(rol);
-                await _appDBContext.SaveChangesAsync();
-            
+            if (rol == null)
+            {
+                return NotFound();
+            }
+            _appDBContext.Roles.Remove(rol);
+            _appDBContext.SaveChanges();
+
             return RedirectToAction(nameof(Index));
         }
     }

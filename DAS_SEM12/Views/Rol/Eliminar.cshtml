@@ -15,13 +15,9 @@
     ?
 </p>
 <form asp-controller="Rol" asp-action="ConfirmacionEliminar" method="post">
-    <input type="hidden" asp-for="idRol" />
-    <div>
-        <button type="submit" class="btn btn-danger">
-            Eliminar
-        </button>
-        <a asp-controller="Rol" asp-action="Index" class="btn btn-secondary">
-            Cancelar
-        </a>
-    </div>
+    <input type="hidden" name="id" value="@Model.idRol"/>
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-controller="Rol" asp-action="Index" class="btn btn-secondary">
+        Cancelar
+    </a>
 </form>

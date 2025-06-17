@@ -3,30 +3,29 @@
 *@
 @{
 }
-@model DAS_SEM12.ViewModels.RegistroVM
+@model DAS_SEM12.Models.Usuario;
 @{
     var roles = ViewBag.Roles as List<DAS_SEM12.Models.Rol>;
 }
 <div>
     <div>
         <div>
-            Regístrate
+            Editar usuario
         </div>
         @if (ViewData["mensaje"] != null)
         {
             <p style="color:red;">@ViewData["mensaje"]</p>
         }
         <div>
-            <form asp-action="Registro" asp-controller="Cuenta" method="post">
+            <form asp-action="Editar" asp-controller="Usuario" method="post">
+                <input asp-for="idUsuario" type="hidden" />
                 <input asp-for="Nombre" placeholder="Nombre" required />
                 <br />
                 <input asp-for="Apellido" placeholder="Apellido" required />
                 <br />
-                <input asp-for="Correo" placeholder="Correo" required />
+                <input asp-for="correo" placeholder="Correo" required />
                 <br />
-                <input asp-for="Password" placeholder="Contraseña" type="password" required />
-                <br />
-                <input asp-for="ConfirmarPassword" placeholder="Confirmar Contraseña" type="password" required />
+                <input asp-for="password" placeholder="Contraseña" type="password" required />
                 <br />
                 <select asp-for="idRol" required>
                     <option value="">Selecciona un rol</option>
@@ -38,11 +37,11 @@
                 <br />
                 <div>
                     <button type="submit">
-                        Regístrate
+                        Guardar
                     </button>
                 </div>
-                <a asp-controller="Cuenta" asp-action="Login">
-                    ¿Ya tienes una cuenta?
+                <a asp-controller="Usuario" asp-action="Mostrar">
+                    Volver
                 </a>
             </form>
         </div>

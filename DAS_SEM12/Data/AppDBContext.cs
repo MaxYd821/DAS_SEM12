@@ -23,6 +23,10 @@ namespace DAS_SEM12.Data
                 tb.Property(col => col.Apellido).HasMaxLength(50);
                 tb.Property(col => col.correo).HasMaxLength(50);
                 tb.Property(col => col.password).HasMaxLength(50);
+                tb.HasOne(u => u.rol)
+                    .WithMany(r => r.Usuarios)
+                    .HasForeignKey(u => u.idRol)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<Rol>(tb => { 
@@ -33,6 +37,7 @@ namespace DAS_SEM12.Data
             });
 
             modelBuilder.Entity<Usuario>().ToTable("Usuario");
+            modelBuilder.Entity<Rol>().ToTable("Rol");
         }
     }
 }

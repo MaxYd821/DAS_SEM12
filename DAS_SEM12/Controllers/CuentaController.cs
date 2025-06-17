@@ -37,5 +37,30 @@ namespace DAS_SEM12.Controllers
             ViewBag.Roles = _appDBContext.Roles.ToList();
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Registro(RegistroVM model)
+        {
+            if (!ModelState.IsValid || model.Password != model.ConfirmarPassword)
+            {
+                ViewBag.Roles = _appDBContext.Roles.ToList();
+                ViewData["mensaje"] = "Revisa los datos ingresados.";
+                return View(model);
+            }
+
+            var usuario = new Usuario
+            {
+                Nombre = model.Nombre,
+                Apellido = model.Apellido,
+                correo = model.Correo,
+                password = model.Password,
+                idRol = model.idRol
+            };
+
+            _appDBContext.Usuarios.Add(usuario);
+            await _appDBContext.SaveChangesAsync();
+
+            return RedirectToAction("Login");
+        }
+
     }
 }

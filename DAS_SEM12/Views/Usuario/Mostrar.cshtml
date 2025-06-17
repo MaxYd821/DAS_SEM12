@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<DAS_SEM12.Models.Usuario>;
+<div>
+    <div class="col-sm-8 offset-sm-2">
+        <h2>Lista de Usuarios</h2>
+        <a asp-controller="Usuario" asp-action="Nuevo" class="btn btn-success mb-3">Nuevo</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>CORREO</th>
+                    <th>CONTRASEÑA</th>
+                    <th>ROL</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                  <tr>
+                    <td>@item.idUsuario</td>
+				    <td>@item.Nombre</td>
+                    <td>@item.Apellido</td>
+                    <td>@item.correo</td>
+				    <td>@item.password</td>
+					<td>@item.rol?.Nombre</td>
+                    <td>
+                        <a asp-controller="Usuario" asp-action="Editar" asp-route-id="@item.idUsuario" class="btn btn-primary">Editar</a>
+                        <a asp-controller="Usuario" asp-action="Eliminar" asp-route-id="@item.idUsuario" class="btn btn-danger">Eliminar</a>
+				    </td>
+                  </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

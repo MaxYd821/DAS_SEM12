@@ -3,31 +3,45 @@
 *@
 @{
 }
-
 @model DAS_SEM12.ViewModels.LoginVM;
-<h2>
-    Iniciar Sesión
-</h2>
-<form asp-controller="Cuenta" asp-action="Login" method="post">
-    <div>
-        <label>
-            Correo
-        </label>
-        <input class="form-control"/>
-        <span asp-validation-for="Correo" class="text-danger"></span>
-    </div>
-    <div>
-        <label>
-            Contraseña
-        </label>
-        <input class="form-control" type="password"/>
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <br />
-    <button type="submit" class="btn btn-primary">
-        Entrar
-    </button>
-    <a asp-controller="Cuenta" asp-action="Registro">
-        ¿No tienes una cuenta? Regístrate
-    </a>
-</form>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Práctica Login y CRUD</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DAS_SEM12.styles.css" asp-append-version="true" />
+    </head>
+    <body>
+    <h2>
+        Iniciar Sesión
+    </h2>
+    <form asp-controller="Cuenta" asp-action="Login" method="post">
+        <div>
+            <label>
+                Correo
+            </label>
+            <input class="form-control" type="text" required asp-for="Correo" />
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
+        <div>
+            <label>
+                Contraseña
+            </label>
+            <input class="form-control" type="password" required asp-for="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">
+            Entrar
+        </button>
+        <a asp-controller="Cuenta" asp-action="Registro">
+            ¿No tienes una cuenta? Regístrate
+        </a>
+    </form>
+    </body>
+    </html>
+

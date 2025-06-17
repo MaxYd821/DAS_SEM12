@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAS_SEM12.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250610131856_MigrationCookies1")]
-    partial class MigrationCookies1
+    [Migration("20250617040622_Migracion")]
+    partial class Migracion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,7 @@ namespace DAS_SEM12.Migrations
 
                     b.HasKey("idRol");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Rol", (string)null);
                 });
 
             modelBuilder.Entity("DAS_SEM12.Models.Usuario", b =>
@@ -78,12 +78,9 @@ namespace DAS_SEM12.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("rolidRol")
-                        .HasColumnType("int");
-
                     b.HasKey("idUsuario");
 
-                    b.HasIndex("rolidRol");
+                    b.HasIndex("idRol");
 
                     b.ToTable("Usuario", (string)null);
                 });
@@ -92,8 +89,8 @@ namespace DAS_SEM12.Migrations
                 {
                     b.HasOne("DAS_SEM12.Models.Rol", "rol")
                         .WithMany("Usuarios")
-                        .HasForeignKey("rolidRol")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("idRol")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("rol");

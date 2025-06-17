@@ -5,13 +5,13 @@
 namespace DAS_SEM12.Migrations
 {
     /// <inheritdoc />
-    public partial class MigrationCookies1 : Migration
+    public partial class Migracion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Roles",
+                name: "Rol",
                 columns: table => new
                 {
                     idRol = table.Column<int>(type: "int", nullable: false)
@@ -21,7 +21,7 @@ namespace DAS_SEM12.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roles", x => x.idRol);
+                    table.PrimaryKey("PK_Rol", x => x.idRol);
                 });
 
             migrationBuilder.CreateTable(
@@ -34,24 +34,23 @@ namespace DAS_SEM12.Migrations
                     Apellido = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     correo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     password = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    idRol = table.Column<int>(type: "int", nullable: false),
-                    rolidRol = table.Column<int>(type: "int", nullable: false)
+                    idRol = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuario", x => x.idUsuario);
                     table.ForeignKey(
-                        name: "FK_Usuario_Roles_rolidRol",
-                        column: x => x.rolidRol,
-                        principalTable: "Roles",
+                        name: "FK_Usuario_Rol_idRol",
+                        column: x => x.idRol,
+                        principalTable: "Rol",
                         principalColumn: "idRol",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuario_rolidRol",
+                name: "IX_Usuario_idRol",
                 table: "Usuario",
-                column: "rolidRol");
+                column: "idRol");
         }
 
         /// <inheritdoc />
@@ -61,7 +60,7 @@ namespace DAS_SEM12.Migrations
                 name: "Usuario");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "Rol");
         }
     }
 }

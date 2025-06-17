@@ -10,14 +10,14 @@
 <div>
     <div>
         <div>
-            Regístrate
+            Crear nuevo usuario
         </div>
         @if (ViewData["mensaje"] != null)
         {
             <p style="color:red;">@ViewData["mensaje"]</p>
         }
         <div>
-            <form asp-action="Registro" asp-controller="Cuenta" method="post">
+            <form asp-action="Nuevo" asp-controller="Usuario" method="post">
                 <input asp-for="Nombre" placeholder="Nombre" required />
                 <br />
                 <input asp-for="Apellido" placeholder="Apellido" required />
@@ -38,11 +38,11 @@
                 <br />
                 <div>
                     <button type="submit">
-                        Regístrate
+                        Guardar
                     </button>
                 </div>
-                <a asp-controller="Cuenta" asp-action="Login">
-                    ¿Ya tienes una cuenta?
+                <a asp-controller="Usuario" asp-action="Mostrar">
+                    Volver
                 </a>
             </form>
         </div>
